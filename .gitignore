@@ -1,0 +1,14 @@
+# Xmake cache
+.xmake/
+build/
+lib/
+
+# MacOS Cache
+**/.DS_Store
+
+# Rust cache
+target/
+Cargo.lock
+
+# VSCode
+.vscode/

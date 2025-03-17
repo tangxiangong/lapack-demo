@@ -7,7 +7,8 @@ fn main() {
     // tell cargo to tell rustc to link the shared library
     println!("cargo:rustc-link-lib=demo");
 
-    // The bindgen::Builder is the main entry point to bindgen, and lets you build up options for the resulting bindings.
+    // The bindgen::Builder is the main entry point to bindgen,
+    // and lets you build up options for the resulting bindings.
     let bindings = bindgen::Builder::default()
         // The input header we would like to generate bindings for.
         .header("./include/demo.h")

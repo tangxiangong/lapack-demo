@@ -1,3 +1,3 @@
 pub(crate) mod bindings;
 
-pub mod add;
+pub mod qr;

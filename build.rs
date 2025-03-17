@@ -1,10 +1,19 @@
+use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    // tell cargo to look for shared libraries in the specified directory
-    println!("cargo:rustc-link-search=./lib");
+    // 获取当前目录的绝对路径
+    let current_dir = env::current_dir().expect("无法获取当前目录");
+    let lib_path = current_dir.join("lib");
+    let lib_path_str = lib_path.to_str().expect("路径包含无效Unicode");
 
-    // tell cargo to tell rustc to link the shared library
+    // 告诉cargo在指定目录查找共享库
+    println!("cargo:rustc-link-search={}", lib_path_str);
+
+    // 设置rpath，确保运行时能找到库文件
+    println!("cargo:rustc-link-arg=-Wl,-rpath,{}", lib_path_str);
+
+    // 告诉cargo链接共享库
     println!("cargo:rustc-link-lib=demo");
 
     // The bindgen::Builder is the main entry point to bindgen,

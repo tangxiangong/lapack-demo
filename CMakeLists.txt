@@ -11,6 +11,9 @@ find_package(LAPACK REQUIRED)
 # 设置 Homebrew 安装的 LAPACK 头文件路径
 set(LAPACK_INCLUDE_DIR "/opt/homebrew/opt/lapack/include")
 
+# 设置 LAPACKE 库路径
+set(LAPACKE_LIB_DIR "/opt/homebrew/opt/lapack/lib")
+
 # 自动包含头文件目录
 file(GLOB SOURCES "c-src/*.c")
 
@@ -26,6 +29,7 @@ target_include_directories(demo PUBLIC
 # 链接 LAPACK 库
 target_link_libraries(demo PUBLIC 
     ${LAPACK_LIBRARIES}
+    ${LAPACKE_LIB_DIR}/liblapacke.dylib
 )
 
 # 设置输出目录

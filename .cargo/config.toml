@@ -1,0 +1,18 @@
+[build]
+rustflags = [
+    "-C",
+    "link-arg=-Wl,-rpath,/opt/homebrew/opt/lapack/lib",
+    "-l",
+    "lapacke",
+    "-l",
+    "lapack",
+    "-l",
+    "blas",
+]
+
+[env]
+LAPACK_PATH = { value = "/opt/homebrew/opt/lapack", force = true }
+INCLUDE = { value = "/opt/homebrew/opt/lapack/include", force = true }
+LIBRARY_PATH = { value = "/opt/homebrew/opt/lapack/lib", force = true }
+LD_LIBRARY_PATH = { value = "/opt/homebrew/opt/lapack/lib", force = true }
+BINDGEN_EXTRA_CLANG_ARGS = { value = "-I/opt/homebrew/opt/lapack/include", force = true }
